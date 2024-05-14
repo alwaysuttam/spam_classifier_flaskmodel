@@ -8,8 +8,11 @@ from nltk.stem.porter import PorterStemmer
 app = Flask(__name__)
 
 # Load pre-trained model and vectorizer
-tfidf = pickle.load(open('data/vectorizer.pkl', 'rb')) ## data\model.pkl
-model = pickle.load(open('data/model.pkl', 'rb'))
+try:
+    tfidf = pickle.load(open('data/vectorizer.pkl', 'rb'))
+    model = pickle.load(open('data/model.pkl', 'rb'))
+except FileNotFoundError:
+    print("Model files not found. Make sure 'data/vectorizer.pkl' and 'data/model.pkl' exist.")
 
 # Initialize NLTK components
 nltk.download('punkt')
@@ -35,18 +38,21 @@ def home():
 
 @app.route('/predict', methods=['POST'])
 def predict():
-    input_sms = request.form['message']
-    transform_sms = transform_text(input_sms)
+    try:
+        input_sms = request.form['message']
+        transform_sms = transform_text(input_sms)
 
-    sms_vector = tfidf.transform([transform_sms])
-    result = model.predict(sms_vector)[0]
+        sms_vector = tfidf.transform([transform_sms])
+        result = model.predict(sms_vector)[0]
 
-    if result == 1:
-        prediction = 'Spam'
-    else:
-        prediction = 'Not Spam'
+        if result == 1:
+            prediction = 'Spam'
+        else:
+            prediction = 'Not Spam'
 
-    return render_template('predict.html', prediction=prediction)
+        return render_template('index.html', prediction=prediction, message=input_sms)
+    except:
+        return render_template('error.html')
 
 
 if __name__ == '__main__':
