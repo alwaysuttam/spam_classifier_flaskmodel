@@ -30,7 +30,7 @@ Pickle
 
 Clone the repository:
 
-git clone https://github.com/yourusername/sms-spam-detection.git
+git clone https://github.com/uttam-bn/spam_classifier_flaskmodel.git
 cd sms-spam-detection
 code . # to open in Visual studio 
 
