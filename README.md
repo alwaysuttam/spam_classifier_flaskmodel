@@ -1,8 +1,8 @@
-**SMS Spam Detection Web Application**
+# SMS Spam Detection Web Application
 
 This is a Flask web application that classifies SMS messages as "Spam" or "Not Spam" using a pre-trained machine learning model. The application processes the input text using Natural Language Processing (NLP) techniques and predicts the message category.
 
-**Project Structure**
+## Project Structure
 
 app.py: The main Flask application script.
 
@@ -26,7 +26,7 @@ NLTK
 Scikit-learn
 Pickle
 
-Installation
+**Installation**
 
 Clone the repository:
 
@@ -39,6 +39,7 @@ Ensure you have Python installed on your machine.
 Install the necessary Python packages using pip:
 
 pip install flask nltk scikit-learn
+
 Download the NLTK data required for the application:
 
 python
@@ -55,3 +56,4 @@ python app.py
 Open your web browser and go to http://127.0.0.1:5000/.
 
 **screenshots of the project**
+![alt text](<Screenshot (54).png>)
