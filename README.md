@@ -31,8 +31,9 @@ Pickle
 Clone the repository:
 
 git clone https://github.com/uttam-bn/spam_classifier_flaskmodel.git
+
 cd sms-spam-detection
-code . # to open in Visual studio 
+
 
 Ensure you have Python installed on your machine.
 
