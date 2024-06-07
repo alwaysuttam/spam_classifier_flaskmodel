@@ -7,14 +7,14 @@ from nltk.stem.porter import PorterStemmer
 
 app = Flask(__name__)
 
-# Load pre-trained model and vectorizer
+
 try:
     tfidf = pickle.load(open('data/vectorizer.pkl', 'rb'))
     model = pickle.load(open('data/model.pkl', 'rb'))
 except FileNotFoundError:
     print("Model files not found. Make sure 'data/vectorizer.pkl' and 'data/model.pkl' exist.")
 
-# Initialize NLTK components
+
 nltk.download('punkt')
 nltk.download('stopwords')
 ps = PorterStemmer()
@@ -22,10 +22,10 @@ stop_words = set(stopwords.words('english'))
 
 
 def transform_text(text):
-    text = text.lower()  # Convert to lowercase
-    text = nltk.word_tokenize(text)  # Tokenization
+    text = text.lower()  
+    text = nltk.word_tokenize(text)  
 
-    # Remove special characters and filter out stopwords
+    
     words = [ps.stem(word) for word in text if word.isalnum() and word not in stop_words]
 
     return " ".join(words)
